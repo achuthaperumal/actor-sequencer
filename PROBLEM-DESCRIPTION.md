@@ -31,7 +31,10 @@ The tests should not be subVIs of the UI.  Instead, the tests should be called d
 ### Test 1: Network Connectivity
 
 This test verifies that multiple network interfaces on a device are functioning properly.  The test will use the ping utility (command line, Window’s API, or other method) to insure network traffic.  
->Two interfaces will be pinged 20 times each.  The test will pass if 80% or more of the packets return.  The first address will be to the loop back address (127.0.0.1) and should pass.  The second address should be to some random address that should fail (i.e. 10.1.2.3).  Ping the address and report back the percent returned.
+>Two interfaces will be pinged 20 times each.  The test will pass if 80% or more of the packets return.  
+
+- [ ] The first address will be to the loop back address (127.0.0.1) and should pass.
+- [ ] The second address should be to some random address that should fail (i.e. 10.1.2.3).  Ping the address and report back the percent returned.
 
 ### Test 2: Text Based Communications
 
@@ -49,12 +52,10 @@ Response5{Actual response here}
 
 For each response there are 4 results. Verify that:
 
-```
 - [ ] Result1 returns ‘PASSED’
 - [ ] Result2 is greater than or equal to 3.30 volts
 - [ ] Result3 is greater than or equal to 80%
 - [ ] Result4 is exactly 6 characters long and contains only valid HEX numbers
-```
 
 A lot of what is required for device testing is parsing text based results.  This test is meant to see how well you can parse the provided commands.
 
@@ -66,8 +67,11 @@ A lot of devices use CAN bus to communicate with test stations.  This test verif
 For example:
 
 
-<span style="color:red">T1L1V1</span><span style="color:green">T2L2V2</span> <span style="color:magenta">T3L3V3</span> … <span style = "color:yellow">TnLnVn</span>
+><span style="color:red">T1L1V1</span><span style="color:green">T2L2V2</span> <span style="color:magenta">T3L3V3</span> … <span style = "color:yellow">TnLnVn</span>
 
-(hex code) <span style="color:red">05 04 FF FF FF FF</span> <span style="color:green">01 01 FF</span> <span style="color:magenta">06 07 FF FF FF FF FF FF FF</span>
+>(hex code) <span style="color:red">05 04 FF FF FF FF</span> <span style="color:green">01 01 FF</span> <span style="color:magenta">06 07 FF FF FF FF FF FF FF</span>
 
-For this test, open the binary file and walk through the TLVs.  You’re looking for `Type = 5`.  For each `type 5`, the value is a string that represents a floating-point number.  Read the correct number of bytes, convert that to string, and then convert it to a number.  Pass that TLV if the number is greater that 3.30.  There should be a separate PASS/FAIL for each occurrence of the Type 5 TLV.
+For this test, open the binary file and walk through the TLVs.  
+
+- [ ] You’re looking for `Type = 5`.  For each `type 5`, the value is a string that represents a floating-point number.  Read the correct number of bytes, convert that to string, and then convert it to a number.  
+- [ ] Pass that TLV if the number is greater that 3.30.  There should be a separate PASS/FAIL for each occurrence of the Type 5 TLV.
