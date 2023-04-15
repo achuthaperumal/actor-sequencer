@@ -1,0 +1,1 @@
+[{"IP/Address":"192.168.1.3","PacketSize":32,"timeout":100,"Packet Count":32,"Min Expected Packed Return %":80,"Ping Result":{"Result?":false,"Actual Packet Return %":0}},{"IP/Address":"192.168.1.1","PacketSize":32,"timeout":100,"Packet Count":32,"Min Expected Packed Return %":80,"Ping Result":{"Result?":false,"Actual Packet Return %":0}}]
